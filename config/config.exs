@@ -16,3 +16,5 @@ import Config
 #       format: "$date $time [$level] $metadata$message\n",
 #       metadata: [:user_id]
 #
+
+config :game_api, :songs_file_path, System.get_env("songs_file_path", "../test/assets/songs.txt")

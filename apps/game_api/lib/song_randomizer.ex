@@ -3,7 +3,7 @@ defmodule GameApi.SongRandomizer do
 
   use GenServer
 
-  @songs_file_path "/assets/songs.txt"
+  @songs_file_path Application.fetch_env!(:game_api, :songs_file_path)
 
   def start_link() do
     GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
@@ -32,7 +32,8 @@ defmodule GameApi.SongRandomizer do
   end
 
   defp load_songs do
-    file_path = Path.join(__DIR__, @songs_file_path)
+    file_path = Path.join(__DIR__, @songs_file_path) |> Path.expand()
+
     unless File.exists?(file_path), do: raise(File.Error, messsage: "Songs file not found")
 
     file_path

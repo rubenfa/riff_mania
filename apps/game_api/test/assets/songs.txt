@@ -1,0 +1,20 @@
+00001#Thunderstruck, AC/DC#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-bf11-07f4e25f988a.mp3
+00002#Enter Sandman, Metallica#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-bf11-07f4e25f928a.mp3
+00003#Have you ever seen the rain?, Creedence clearwater revival#/home/ruben/Desarrollo/songs/275f8c5c-b1ae-4dba-bf11-07f4e25f988a.mp3
+00004#Highway to hell, AC/DC#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-bf11-07f4e27f988a.mp3
+00005#Loser, Beck#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-bf11-07f4e20f988a.mp3
+00006#Stairway to heaven, Led Zeppelin#/home/ruben/Desarrollo/songs/275d8c5c-bbbe-4dba-bf11-07f4e25f988a.mp3
+00007#(Can't Get No) Satisfaction, The Rolling Stones#/home/ruben/Desarrollo/songs/2898c5c-b1ae-4dba-bf11-07f4e25f988a.mp3
+00008#Nothing else matters, Metallica#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-ff11-07f4e25f988a.mp3
+00009#Sweet child of mine, Guns N' Roses#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dea-bf11-07f4e25f988a.mp3
+00010#Smells like teen spirit, Nirvana#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-pf11-07f4e25f988a.mp3
+00011#Hotel California, The Eagles#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-bf11-00f4e25f988a.mp3
+00012#Sultans of swing, Dire Straits#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-bf11-0774e25f988a.mp3
+00013#La Grange, ZZ Top#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-bf11-07f4e35f988a.mp3
+00014#Black dog, Led Zeppelin#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dba-bf11-a7f4e25f988a.mp3
+00015#Paranoid, Black Sabbath#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4dbf-bf11-07f4e25f988a.mp3
+00016#Ironman, Black Sabbath#/home/ruben/Desarrollo/songs/275d8c5c-b1ae-4eba-bf11-07f4d25f988a.mp3
+00017#Wish You Were Here, Pink Floyd#/home/ruben/Desarrollo/songs/275d8d5c-b1ae-4dba-bf11-07f4e25f988a.mp3
+00018#Money, Pink Floyd#/home/ruben/Desarrollo/songs/d75d8c5c-b1ae-4dba-bf11-07f4e25f988a.mp3
+00019#Dust in the wind, Kansas#/home/ruben/Desarrollo/songs/275d8e5c-11ae-4dba-bf11-07f4e25f988a.mp3
+00020#Johnny B. Good, Chuck Berry#/home/ruben/Desarrollo/songs/275d8c9c-b1ae-4d3a-bf11-07f4e25f988a.mp3
