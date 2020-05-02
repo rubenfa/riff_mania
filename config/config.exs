@@ -20,3 +20,7 @@ import Config
 config :game_api,
        :songs_file_path,
        System.get_env("songs_file_path", "../../test/assets/songs.txt")
+
+
+import_config "#{Mix.env()}.exs"
+

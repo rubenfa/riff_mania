@@ -9,7 +9,7 @@ defmodule GameApi.Tests.GamePlay do
   end
 
   test "Creating a GamePlay with 3 turns" do
-    game_play = GamePlay.new(turns: 3)
+    game_play = GamePlay.new()
     wrong_songs = Enum.flat_map(game_play.turns, fn g -> g.wrong_songs end)
 
     assert Enum.count(game_play.turns) == 3
