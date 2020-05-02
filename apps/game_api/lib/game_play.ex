@@ -1,4 +1,7 @@
 defmodule GameApi.GamePlay do
+  @moduledoc """
+  A GamePlay controls the state of a play of `riff_mania`
+  """
   defstruct turns: []
 
   alias GameApi.SongGroup
