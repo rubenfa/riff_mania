@@ -1,5 +1,5 @@
 defmodule GameApi.SongRandomizer do
-  alias GameApi.{Song, SongGroup}
+  alias GameApi.Song
 
   use GenServer
 
@@ -17,37 +17,18 @@ defmodule GameApi.SongRandomizer do
     {:ok, Map.put(state, :songs_table, songs_table)}
   end
 
-  def get(opts \\ []) do
-    GenServer.call(__MODULE__, {:get, opts})
+  def get(songs_number) when is_integer(songs_number) do
+    unless enought_songs?(songs_number) do
+      raise ArgumentError, message: "There are not enought different songs"
+    end
+
+    GenServer.call(__MODULE__, {:get, songs_number})
   end
 
   # PRIVATE API
 
-  def handle_call({:get, opts}, _from, state) do
-    groups = Keyword.get(opts, :groups, 1)
-    others_number = Keyword.get(opts, :others, 3)
-
-    groups = generate_groups([], groups, others_number)
-    {:reply, groups, state}
-  end
-
-  defp generate_groups(groups, 0, _others_number), do: groups
-
-  defp generate_groups(groups, n, others_number) do
-    groups = [generate_group(others_number) | groups]
-    generate_groups(groups, n - 1, others_number)
-  end
-
-  defp generate_group(others_number) do
-    SongGroup.new(read_song(), generate_others([], others_number))
-  end
-
-  defp generate_others(others, 0), do: others
-
-  defp generate_others(others, n) do
-    others = [read_song() | others]
-
-    generate_others(others, n - 1)
+  def handle_call({:get, songs_number}, _from, state) do
+    {:reply, read_songs(songs_number), state}
   end
 
   defp load_songs do
@@ -76,8 +57,24 @@ defmodule GameApi.SongRandomizer do
     :ets.insert(:songs_table, {id, song})
   end
 
+  def read_songs(songs_number, acc \\ [])
+  def read_songs(0, acc), do: acc
+
+  def read_songs(songs_number, acc) do
+    new_song = read_song()
+
+    cond do
+      Enum.any?(acc, fn s -> s.title == new_song.title end) -> read_songs(songs_number, acc)
+      true -> read_songs(songs_number - 1, [new_song | acc])
+    end
+  end
+
   defp read_song do
-    [{_id, song}] = :ets.lookup(:songs_table, 1)
+    table_size = :ets.info(:songs_table, :size)
+
+    [{_id, song}] = :ets.lookup(:songs_table, :rand.uniform(table_size))
     song
   end
+
+  defp enought_songs?(number), do: :ets.info(:songs_table, :size) >= number
 end
