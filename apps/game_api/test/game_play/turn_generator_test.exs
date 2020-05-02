@@ -1,10 +1,11 @@
-defmodule GameApi.Tests.GamePlayTests do
+defmodule GameApi.Tests.GamePlay.TurnGeneratorTests do
   use ExUnit.Case, async: true
 
   alias GameApi.{GamePlay, Song, SongGroup}
+  alias GamePlay.TurnGenerator
 
   test "Should return a new song group" do
-    songs_group = get_not_repeated_songs_list() |> GamePlay.new()
+    songs_group = get_not_repeated_songs_list() |> TurnGenerator.new()
 
     assert [
              %SongGroup{
@@ -15,7 +16,7 @@ defmodule GameApi.Tests.GamePlayTests do
   end
 
   test "Should return a new song group with 4 other songs" do
-    songs_group = get_not_repeated_songs_list() |> GamePlay.new(wrong_songs_number: 4)
+    songs_group = get_not_repeated_songs_list() |> TurnGenerator.new(wrong_songs_number: 4)
 
     assert [
              %SongGroup{
@@ -26,7 +27,8 @@ defmodule GameApi.Tests.GamePlayTests do
   end
 
   test "Should return 2 new song groups with 4 other songs" do
-    songs_group = get_not_repeated_songs_list() |> GamePlay.new(groups: 2, wrong_songs_number: 4)
+    songs_group =
+      get_not_repeated_songs_list() |> TurnGenerator.new(groups: 2, wrong_songs_number: 4)
 
     assert [
              %SongGroup{
@@ -41,7 +43,7 @@ defmodule GameApi.Tests.GamePlayTests do
   end
 
   test "Should return 3 new song groups with 3 other songs" do
-    songs_group = get_not_repeated_songs_list() |> GamePlay.new(groups: 3)
+    songs_group = get_not_repeated_songs_list() |> TurnGenerator.new(groups: 3)
 
     assert [
              %SongGroup{
@@ -61,7 +63,7 @@ defmodule GameApi.Tests.GamePlayTests do
 
   test "Songs in a group should be different" do
     for _n <- 1..100 do
-      [songs_group] = get_not_repeated_songs_list() |> GamePlay.new()
+      [songs_group] = get_not_repeated_songs_list() |> TurnGenerator.new()
 
       all_titles = [
         songs_group.right_song.title | Enum.map(songs_group.wrong_songs, fn o -> o.title end)
@@ -75,12 +77,12 @@ defmodule GameApi.Tests.GamePlayTests do
   end
 
   test "Raises error with a duplicated song" do
-    assert_raise(ArgumentError, fn -> get_repeated_songs_list() |> GamePlay.new() end)
+    assert_raise(ArgumentError, fn -> get_repeated_songs_list() |> TurnGenerator.new() end)
   end
 
   test "Raises error if we ask for to many songs" do
     assert_raise(ArgumentError, fn ->
-      get_not_repeated_songs_list() |> GamePlay.new(groups: 3, wrong_songs_number: 5)
+      get_not_repeated_songs_list() |> TurnGenerator.new(groups: 3, wrong_songs_number: 5)
     end)
   end
 

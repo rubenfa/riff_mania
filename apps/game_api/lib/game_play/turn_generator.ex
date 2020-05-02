@@ -1,9 +1,4 @@
-defmodule GameApi.GamePlay do
-  @moduledoc """
-  A GamePlay controls the state of a play of `riff_mania`
-  """
-  defstruct turns: []
-
+defmodule GameApi.GamePlay.TurnGenerator do
   alias GameApi.SongGroup
 
   def new(songs_list, opts \\ []) do

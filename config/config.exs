@@ -17,4 +17,6 @@ import Config
 #       metadata: [:user_id]
 #
 
-config :game_api, :songs_file_path, System.get_env("songs_file_path", "../test/assets/songs.txt")
+config :game_api,
+       :songs_file_path,
+       System.get_env("songs_file_path", "../../test/assets/songs.txt")
