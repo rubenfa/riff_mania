@@ -3,11 +3,6 @@ defmodule GameApi.Tests.SongRandomizerTests do
 
   alias GameApi.{Song, SongRandomizer}
 
-  setup do
-    SongRandomizer.start_link()
-    :ok
-  end
-
   test "Should return one song" do
     assert [%Song{}] = SongRandomizer.get(1)
   end

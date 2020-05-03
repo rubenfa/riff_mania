@@ -15,8 +15,8 @@ defmodule GameApi.SongRandomizer do
   @doc """
   Used to start the server. 
   """
-  def start_link() do
-    GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
+  def start_link(opts \\ %{}) do
+    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
   @doc """
