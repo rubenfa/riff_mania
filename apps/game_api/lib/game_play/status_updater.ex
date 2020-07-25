@@ -7,5 +7,12 @@ defmodule GameApi.GamePlay.StatusChanger do
     game_play |> Map.put(:status, :awaiting_start)
   end
 
+  def change_from(%GamePlay{players: players} = game_play, :awaiting_start) do
+    case Enum.all?(players, fn p -> p.status == :ready end) do
+      true -> game_play |> Map.put(:status, :ready_to_start)
+      false -> game_play
+    end
+  end
+
   def change_from(game_play, _old_status), do: game_play
 end

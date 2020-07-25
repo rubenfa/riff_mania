@@ -1,5 +1,5 @@
 defmodule GameApi.Players.Player do
-  defstruct id: "", name: ""
+  defstruct id: "", name: "", status: :waiting
 
   alias GameApi.Players.Player
 

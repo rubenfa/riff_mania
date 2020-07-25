@@ -31,6 +31,27 @@ defmodule GameApi.GamePlay do
 
   def add_player(%GamePlay{status: _status} = game_play, _player), do: {:error, game_play}
 
+  def add_players(%GamePlay{} = game_play, []), do: {:ok, game_play}
+
+  def add_players(%GamePlay{} = game_play, [p | players]) do
+    case add_player(game_play, p) do
+      {:ok, game_play} -> add_players(game_play, players)
+      {:error, game_play} -> {:error, game_play}
+    end
+  end
+
+  def player_ready(%GamePlay{players: players} = game_play, player) do
+    player = Map.put(player, :status, :ready)
+    other_players = players |> Enum.filter(fn p -> p.id !== player.id end)
+
+    game_play =
+      game_play
+      |> Map.put(:players, [player | other_players])
+      |> StatusChanger.change_from(:awaiting_start)
+
+    {:ok, game_play}
+  end
+
   defp get_song_list(turns, wrong_songs_number) do
     GameApi.SongRandomizer.get(turns * (wrong_songs_number + 1))
   end
