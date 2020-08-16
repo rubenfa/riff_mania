@@ -132,7 +132,7 @@ defmodule GameApi.Tests.GamePlay do
       {:ok, game_play} = GamePlay.player_ready(game_play, player4)
       player4 = Enum.find(game_play.players, fn p -> p.id == player4.id end)
       assert player4.status == :ready
-      assert(game_play.status == :ready_to_start)
+      assert(game_play.status == :on_turn)
     end
   end
 end
